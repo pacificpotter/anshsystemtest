@@ -18,6 +18,23 @@
             echo $sum;
         }
         
+        public function multiply($arguments){
+            $result = 1;
+            if(empty($arguments)){
+                $result = 0;
+            }
+            else{
+                $arguments = explode(',', $arguments[0]);
+                if(!empty($arguments[0])){
+                    $result *= $arguments[0]; 				
+                }
+                if(!empty($arguments[1])){
+                    $result *= $arguments[1]; 				
+                }
+            }
+            echo $result;
+        }
+        
         public function add($arguments){
             $sum =0;
             if(!empty($arguments[0])){
@@ -58,7 +75,6 @@
             if($number < 0){
                 echo "Negative numbers not allowed";
             }
-        }
-        
+        }        
     }
 ?>
