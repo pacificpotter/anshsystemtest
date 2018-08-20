@@ -25,11 +25,13 @@
                 if(!empty($values)){
                     foreach ($values as $value) {
                         $this->showError($value);
-                        if($this->findSpecialChars($value)){
-                            $sum = $this->removeSlashN($value);
+                        if($value < 1000){
+                            if($this->findSpecialChars($value)){
+                                $sum = $this->removeSlashN($value);
+                            }
+                            else
+                                $sum += $value;       
                         }
-                        else
-                            $sum += $value;   
                     }				
                 }
             }
