@@ -24,6 +24,7 @@
                 $values = explode(',', $arguments[0]);
                 if(!empty($values)){
                     foreach ($values as $value) {
+                        $this->showError($value);
                         if($this->findSpecialChars($value)){
                             $sum = $this->removeSlashN($value);
                         }
@@ -39,6 +40,7 @@
             if(strpos($num, '\n')){
                 return true;
             }
+            
         }
         
         public function removeSlashN($numbers){
@@ -48,6 +50,12 @@
                 $result += $number;
             }
             return $result;
+        }
+        
+        public function showError($number){
+            if($number < 0){
+                echo "Negative numbers not allowed";
+            }
         }
         
     }
