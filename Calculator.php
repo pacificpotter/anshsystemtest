@@ -21,14 +21,33 @@
         public function add($arguments){
             $sum =0;
             if(!empty($arguments[0])){
-                $params = explode(',', $arguments[0]);
-                if(!empty($params)){
-                    foreach ($params as $param) {
-                            $sum += $param;
+                $values = explode(',', $arguments[0]);
+                if(!empty($values)){
+                    foreach ($values as $value) {
+                        if($this->findSpecialChars($value)){
+                            $sum = $this->removeSlashN($value);
+                        }
+                        else
+                            $sum += $value;   
                     }				
                 }
             }
             echo $sum;
+        }
+        
+        public function findSpecialChars($num){
+            if(strpos($num, '\n')){
+                return true;
+            }
+        }
+        
+        public function removeSlashN($numbers){
+            $numbers = explode('\n', $numbers);
+            $result =0;
+            foreach($numbers as $number){
+                $result += $number;
+            }
+            return $result;
         }
         
     }
